@@ -15,6 +15,6 @@ services:
        MYSQL_USER: docker
        MYSQL_PASSWORD: docker
 
-  volumes:
-    mysql_data:
-    mysql_logs:
+volumes:
+  mysql_data:
+  mysql_logs:

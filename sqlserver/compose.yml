@@ -15,6 +15,6 @@ services:
        MSSQL_USER: docker
        MSSQL_PASSWORD: docker
 
-  volumes:
-    sqlserver_data:
-    sqlserver_logs:
+volumes:
+  sqlserver_data:
+  sqlserver_logs:

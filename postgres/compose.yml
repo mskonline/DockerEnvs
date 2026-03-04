@@ -15,6 +15,6 @@ services:
        POSTGRES_USER: docker
        POSTGRES_PASSWORD: docker
 
-  volumes:
-    postgres_data:
-    postgres_logs:
+volumes:
+  postgres_data:
+  postgres_logs:
