@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    ports:
+      - "127.0.0.1:3306:3306"
+    volumes:
+      - ./config/initdb:/docker-entrypoint-initdb.d
+      - ./data/mysql:/var/lib/mysql
+      - ./logs/mysql:/var/log/mysql
+    environment:
+       MYSQL_ROOT_PASSWORD: tiger
+       MYSQL_DATABASE: docker
+       MYSQL_USER: docker
+       MYSQL_PASSWORD: docker
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    links:
+      - mysql
+    ports:
+      - "127.0.0.1:8080:80"
+      - "443:443"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: tiger
+      MYSQL_ROOT_PASSWORD: tiger
+      MYSQL_DATABASE: docker
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+    volumes:
+      - /sessions
+      - ./php.ini:/usr/local/etc/php/conf.d/php-phpmyadmin.ini    
+

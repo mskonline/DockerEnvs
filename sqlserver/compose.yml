@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: sqlserver:latest
+    container_name: sqlserver
+    ports:
+      - "127.0.0.1:1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql/data
+      - sqlserver_logs:/var/opt/mssql/log
+    environment:
+       MSSQL_SA_PASSWORD: password
+       MSSQL_DATABASE: docker
+       MSSQL_USER: docker
+       MSSQL_PASSWORD: docker
+
+  volumes:
+    sqlserver_data:
+    sqlserver_logs:
